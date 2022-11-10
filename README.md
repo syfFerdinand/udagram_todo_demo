@@ -1,6 +1,5 @@
 # Serverless TODO
 
-To implement this project, you need to implement a simple TODO application using AWS Lambda and Serverless framework. Search for all comments starting with the `TODO:` in the code to find the placeholders that you need to implement.
 ## Prerequisites
 
 * <a href="https://manage.auth0.com/" target="_blank">Auth0 account</a>
