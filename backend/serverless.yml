@@ -99,7 +99,6 @@ functions:
           method: post
           path: todos
           cors: true
-          reqValidatorName: RequestBodyValidator
           authorizer: Auth
           request:
             schemas:
@@ -125,7 +124,6 @@ functions:
           method: patch
           path: todos/{todoId}
           cors: true
-          reqValidatorName: RequestBodyValidator
           authorizer: Auth
           documentation:
             summary: "update a todo"
@@ -148,7 +146,6 @@ functions:
           method: delete
           path: todos/{todoId}
           cors: true
-          reqValidatorName: RequestBodyValidator
           authorizer: Auth
     iamRoleStatementsInherit: true
     iamRoleStatements:
@@ -179,17 +176,7 @@ resources:
     # Add necessary AWS resources. You will need at least the following AWS resources
     # TODO: Fill the properties
     # Feel free to change the names as you like. 
-    GatewayResponseDefault4XX:
-      Type: AWS::ApiGateway::GatewayResponse
-      Properties:
-        ResponseParameters:
-          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
-        ResponseType: DEFAULT_4XX
-        RestApiId:
-          Ref: ApiGatewayRestApi
-
+   
     
     # TODO: Create a DynamoDB table with local secondary index and a composite key
     
@@ -221,14 +208,6 @@ resources:
               ProjectionType: ALL 
 
 
-    RequestBodyValidator:
-      Type: AWS::ApiGateway::RequestValidator
-      Properties:
-        Name: 'request-body-validator'
-        RestApiId:
-          Ref: ApiGatewayRestApi
-        ValidateRequestBody: true
-        ValidateRequestParameters: false
     # TODO: Complete the bucket properties below. 
     # Do not forget to add the CorsConfiguration propoerty
     AttachmentsBucket:
