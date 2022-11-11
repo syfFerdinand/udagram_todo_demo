@@ -100,9 +100,6 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
-          request:
-            schemas:
-              application/json: ${file(models/create-todo-model.json)}
           documentation:
             summary: "create a todo"
             description: "create a todo"
